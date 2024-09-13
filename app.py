@@ -1,0 +1,111 @@
+import numpy as np
+import pickle
+import pandas as pd
+import streamlit as st 
+
+
+with open("logistics.pickle","rb") as pickle_in:
+  classifier=pickle.load(pickle_in)
+
+
+def welcome():
+    return "Welcome All"
+
+def predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width):
+    
+    """Let's Authenticate the Banks Note 
+    This is using docstrings for specifications.
+    ---
+    parameters:  
+      - name: variance
+        in: query
+        type: number
+        required: true
+      - name: skewness
+        in: query
+        type: number
+        required: true
+      - name: curtosis
+        in: query
+        type: number
+        required: true
+      - name: entropy
+        in: query
+        type: number
+        required: true
+    responses:
+        200:
+            description: The output values
+        
+    """
+   
+    prediction=classifier.predict([[Sepal_length, Sepal_width, Petal_length, Petal_width]])
+    print(prediction)
+    return prediction
+
+
+
+def main():
+    st.title("AIR_lthy")
+    html_temp = """
+    <div style="background-color:tomato;padding:10px">
+    <h2 style="color:white;text-align:center;">Air Quality Index Prediction App </h2>
+    </div>
+    """
+        
+    """Proudly, The Outliers!"""
+
+
+    st.markdown(html_temp,unsafe_allow_html=True)
+    Sepal_length = st.text_input("Longitude")
+    Sepal_width = st.text_input("Latitude")
+    Petal_length = st.text_input("Month")
+    Petal_width = st.text_input("CO2 Column")
+    result=""
+    if st.button("Predict"):
+        result=predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width)
+    st.success('The output is {}'.format(result))
+    if st.button("About"):
+        st.text("Lets LEarn")
+        st.text("Many thanks")
+
+if __name__=='__main__':
+    main()
+    
+    
+    
+#==================================
+""" 
+import pickle
+import gradio as gr
+
+
+with open("DTHabitatClassifier.pkl", "rb") as pickle_in:
+    classifier = pickle.load(pickle_in)
+
+
+def habitat(species, processid, marker_code, gb_acs, nucraw, levenshtein_distance):
+    #Habitat Classification"""
+"""prediction = classifier.predict([[species, processid, marker_code, gb_acs, nucraw, levenshtein_distance]])
+    return prediction[0]  # Return the predicted habitat
+
+
+iface = gr.Interface(
+    fn=habitat,
+    inputs=[
+        gr.Textbox(label="Species"),
+        gr.Textbox(label="Processid"),
+        gr.Textbox(label="Marker Code"),
+        gr.Textbox(label="GB_ACS"),
+        gr.Textbox(label="Nucraw"),
+        gr.Textbox(label="Levenshtein Distance")
+    ],
+    outputs=gr.Textbox(label="Predicted Habitat"),
+    title="eDNA Habitat Classification",
+    description="Classify the habitat using eDNA data."
+)
+
+iface.launch()
+
+    gradio_app.launch()
+"""
