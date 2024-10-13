@@ -66,46 +66,8 @@ def main():
         result=predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width)
     st.success('The output is {}'.format(result))
     if st.button("About"):
-        st.text("Lets LEarn")
-        st.text("Many thanks")
+      st.text("Lets LEarn")
+      st.text("Many thanks")
 
 if __name__=='__main__':
     main()
-    
-    
-    
-#==================================
-""" 
-import pickle
-import gradio as gr
-
-
-with open("DTHabitatClassifier.pkl", "rb") as pickle_in:
-    classifier = pickle.load(pickle_in)
-
-
-def habitat(species, processid, marker_code, gb_acs, nucraw, levenshtein_distance):
-    #Habitat Classification"""
-"""prediction = classifier.predict([[species, processid, marker_code, gb_acs, nucraw, levenshtein_distance]])
-    return prediction[0]  # Return the predicted habitat
-
-
-iface = gr.Interface(
-    fn=habitat,
-    inputs=[
-        gr.Textbox(label="Species"),
-        gr.Textbox(label="Processid"),
-        gr.Textbox(label="Marker Code"),
-        gr.Textbox(label="GB_ACS"),
-        gr.Textbox(label="Nucraw"),
-        gr.Textbox(label="Levenshtein Distance")
-    ],
-    outputs=gr.Textbox(label="Predicted Habitat"),
-    title="eDNA Habitat Classification",
-    description="Classify the habitat using eDNA data."
-)
-
-iface.launch()
-
-    gradio_app.launch()
-"""
