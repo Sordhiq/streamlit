@@ -15,7 +15,7 @@ st.set_page_config(
 @st.cache_resource
 def load_model():
     try:
-        with open('logistics.pickle', 'rb') as file:
+        with open('logistics.pkl', 'rb') as file:
             model = pickle.load(file)
         return model
     except FileNotFoundError:
@@ -56,21 +56,26 @@ def main():
             # Get prediction probability
             prediction_proba = model.predict_proba(features)
             
-            # Create a mapping for iris species
-            species_mapping = {
-                0: "Setosa",
-                1: "Versicolor",
-                2: "Virginica"
-            }
+            # Get the class labels from the model if available
+            if hasattr(model, 'classes_'):
+                species_mapping = dict(enumerate(model.classes_))
+            else:
+                # Fallback mapping
+                species_mapping = {
+                    0: "Iris-setosa",
+                    1: "Iris-versicolor",
+                    2: "Iris-virginica"
+                }
             
             # Display prediction
+            predicted_species = species_mapping[prediction[0]] if isinstance(prediction[0], (int, np.integer)) else prediction[0]
             st.subheader("Prediction Results:")
-            st.success(f"The Iris flower is predicted to be: **{species_mapping[prediction[0]]}**")
+            st.success(f"The Iris flower is predicted to be: **{predicted_species}**")
             
             # Display prediction probabilities
             st.subheader("Prediction Probabilities:")
             prob_df = pd.DataFrame({
-                'Species': ['Setosa', 'Versicolor', 'Virginica'],
+                'Species': list(species_mapping.values()),
                 'Probability': prediction_proba[0]
             })
             
