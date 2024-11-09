@@ -20,8 +20,9 @@ def welcome():
     return "Welcome All"
 
 def predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width):
-    
-    prediction = classifier.predict([[Sepal_length, Sepal_width, Petal_length, Petal_width]])
+
+    features = np.array([[Sepal_length, Sepal_width, Petal_length, Petal_width]])
+    prediction = classifier.predict(features)
     return prediction
 
 def main():
@@ -36,10 +37,10 @@ def main():
 
 
     st.markdown(html_temp,unsafe_allow_html=True)
-    Sepal_length = st.text_input("Sepal Lenght")
-    Sepal_width = st.text_input("Sepal Width")
-    Petal_length = st.text_input("Petal Lenght")
-    Petal_width = st.text_input("Petal Width")
+    Sepal_length = st.number_input("Sepal Lenght", min_value=0.0, max_value=10.0, step=0.1, value=1.0)
+    Sepal_width = st.number_input("Sepal Width")
+    Petal_length = st.number_input("Petal Lenght", min_value=0.0, max_value=10.0, step=0.1, value=1.0)
+    Petal_width = st.number_input("Petal Width")
     result=""
     if st.button("Predict"):
         result = predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width)
