@@ -26,7 +26,7 @@ def main():
 
 
     st.markdown(html_temp,unsafe_allow_html=True)
-    Sepal_length = st.text_input("Sepal Lenght", min_value=0.0, max_value=10.0, value=5.0, step=0.1)
+    Sepal_length = st.text_input("Sepal Lenght")
     Sepal_width = st.text_input("Sepal Width")
     Petal_length = st.text_input("Petal Lenght")
     Petal_width = st.text_input("Petal Width")
