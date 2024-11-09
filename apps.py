@@ -8,8 +8,8 @@ def load_model():
     try:
         with open('logistics.pkl', 'rb') as file:
             model = pickle.load(file)
-            return model
-        except FileNotFoundError:
+        return model
+    except FileNotFoundError:
             st.error("The file you have attempted to load does not exist in the file directory.\
               Kindly recheck please.")
         return None
@@ -51,3 +51,5 @@ def main():
 
 if __name__=='__main__':
     main()
+
+
