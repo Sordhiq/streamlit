@@ -26,10 +26,10 @@ def main():
 
 
     st.markdown(html_temp,unsafe_allow_html=True)
-    Sepal_length = st.text_input("Sepal Lenght", "Kindky enter a decimal value between 0.1 and 10.0")
-    Sepal_width = st.text_input("Sepal Width", "Kindky enter a decimal value between 0.1 and 10.0")
-    Petal_length = st.text_input("Petal Lenght", "Kindky enter a decimal value between 0.1 and 10.0")
-    Petal_width = st.text_input("Petal Width", "Kindky enter a decimal value between 0.1 and 10.0")
+    Sepal_length = st.text_input("Sepal Lenght", min_value=0.0, max_value=10.0, value=5.0, step=0.1)
+    Sepal_width = st.text_input("Sepal Width")
+    Petal_length = st.text_input("Petal Lenght")
+    Petal_width = st.text_input("Petal Width")
     result=""
     if st.button("Predict"):
         result = predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width)
