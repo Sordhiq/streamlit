@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+import google.generativeai as genai
 from sklearn.preprocessing import StandardScaler
 
 # Set page config
@@ -11,11 +12,47 @@ st.set_page_config(
     layout="centered"
 )
 
+# Initialize Gemini API
+def initialize_gemini():
+    try:
+        api_key = st.secrets["GEMINI_API_KEY"]
+        genai.configure(api_key=api_key)
+        return genai.GenerativeModel('gemini-pro')
+    except Exception as e:
+        st.error(f"Error initializing Gemini API: {str(e)}")
+        return None
+
+# Function to get AI summary
+def get_ai_summary(model_gemini, species, probabilities, measurements):
+    prompt = f"""
+    As a botanist, provide a brief, engaging summary of an Iris flower prediction with the following details:
+    
+    Predicted Species: {species}
+    Prediction Probabilities: {probabilities}
+    Measurements:
+    - Sepal Length: {measurements[0]} cm
+    - Sepal Width: {measurements[1]} cm
+    - Petal Length: {measurements[2]} cm
+    - Petal Width: {measurements[3]} cm
+    
+    Please include:
+    1. Confidence of the prediction
+    2. Notable characteristics based on measurements
+    3. Brief description of the predicted species
+    Keep the response concise and informative.
+    """
+    
+    try:
+        response = model_gemini.generate_content(prompt)
+        return response.text
+    except Exception as e:
+        return f"Error generating AI summary: {str(e)}"
+
 # Function to load the model
 @st.cache_resource
 def load_model():
     try:
-        with open('logistics.pickle', 'rb') as file:
+        with open('logistics.pkl', 'rb') as file:
             model = pickle.load(file)
         return model
     except FileNotFoundError:
@@ -23,6 +60,9 @@ def load_model():
         return None
 
 def main():
+    # Initialize Gemini model
+    model_gemini = initialize_gemini()
+    
     # Add title and description
     st.title("🌸 Iris Flower Prediction App")
     st.write("""
@@ -89,6 +129,21 @@ def main():
                 'Value (cm)': [sepal_length, sepal_width, petal_length, petal_width]
             })
             st.table(input_df)
+            
+            # Generate and display AI summary
+            if model_gemini:
+                st.subheader("🤖 AI-Generated Analysis:")
+                with st.spinner("Generating AI analysis..."):
+                    measurements = [sepal_length, sepal_width, petal_length, petal_width]
+                    summary = get_ai_summary(
+                        model_gemini,
+                        predicted_species,
+                        prob_df.to_dict(),
+                        measurements
+                    )
+                    st.markdown(summary)
+            else:
+                st.warning("AI summary not available. Please check your Gemini API configuration.")
     
     # Add information about the model
     with st.expander("ℹ️ About this app"):
@@ -104,6 +159,9 @@ def main():
         - Iris Setosa
         - Iris Versicolor
         - Iris Virginica
+        
+        The app includes an AI-powered analysis using Google's Gemini API to provide
+        detailed insights about the prediction.
         """)
 
 if __name__ == "__main__":
