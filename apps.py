@@ -10,8 +10,8 @@ def load_model():
             model = pickle.load(file)
         return model
     except FileNotFoundError:
-            st.error("The file you have attempted to load does not exist in the file directory.\
-              Kindly recheck please.")
+        st.error("The file you have attempted to load does not exist in the file directory.\
+                 Kindly recheck please.")
         return None
         
 classifier = load_model()
