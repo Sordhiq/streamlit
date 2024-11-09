@@ -3,7 +3,7 @@ import pickle
 import pandas as pd
 import streamlit as st 
 
-with open("logistics.pickle", "rb") as file:
+with open("logistics.pkl", "rb") as file:
     classifier = pickle.load(file)
 
 def welcome():
