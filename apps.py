@@ -3,8 +3,18 @@ import pickle
 import pandas as pd
 import streamlit as st 
 
-with open("logistics.pkl", "rb") as file:
-    classifier = pickle.load(file)
+# Function to load the model
+@st.cache_resource
+def load_model():
+    try:
+        with open('logistics.pkl', 'rb') as file:
+            model = pickle.load(file)
+        return model
+    except FileNotFoundError:
+        st.error("Model file not found. Please make sure 'model.pkl' exists in the same directory.")
+        return None
+        
+classifier = load_model()
 
 def welcome():
     return "Welcome All"
