@@ -3,21 +3,16 @@ import pickle
 import pandas as pd
 import streamlit as st 
 
-
 with open("logistics.pickle", "rb") as file:
-    model = pickle.load(file)
-
+    classifier = pickle.load(file)
 
 def welcome():
     return "Welcome All"
 
 def predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width):
     
-    prediction=classifier.predict([[Sepal_length, Sepal_width, Petal_length, Petal_width]])
-    print(prediction)
+    prediction = classifier.predict([[Sepal_length, Sepal_width, Petal_length, Petal_width]])
     return prediction
-
-
 
 def main():
     st.title("AIR_lthy")
