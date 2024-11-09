@@ -15,7 +15,7 @@ def predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width):
     return prediction
 
 def main():
-    st.title("AIR_lthy")
+    st.title("Predicting Iris Flowers")
     html_temp = """
     <div style="background-color:tomato;padding:10px">
     <h2 style="color:white;text-align:center;">Air Quality Index Prediction App </h2>
@@ -26,10 +26,10 @@ def main():
 
 
     st.markdown(html_temp,unsafe_allow_html=True)
-    Sepal_length = st.text_input("Sepal Lenght")
-    Sepal_width = st.text_input("Sepal Width")
-    Petal_length = st.text_input("Petal Lenght")
-    Petal_width = st.text_input("Petal Width")
+    Sepal_length = st.text_input("Sepal Lenght", "Kindky enter a decimal value between 0.1 and 10.0")
+    Sepal_width = st.text_input("Sepal Width", "Kindky enter a decimal value between 0.1 and 10.0")
+    Petal_length = st.text_input("Petal Lenght", "Kindky enter a decimal value between 0.1 and 10.0")
+    Petal_width = st.text_input("Petal Width", "Kindky enter a decimal value between 0.1 and 10.0")
     result=""
     if st.button("Predict"):
         result = predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width)
