@@ -15,7 +15,7 @@ st.set_page_config(
 @st.cache_resource
 def load_model():
     try:
-        with open('logistics.pkl', 'rb') as file:
+        with open('logistics.pickle', 'rb') as file:
             model = pickle.load(file)
         return model
     except FileNotFoundError:
