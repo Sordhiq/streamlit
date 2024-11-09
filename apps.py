@@ -3,6 +3,8 @@ import pickle
 import pandas as pd
 import streamlit as st 
 
+@st.cache_resource
+
 with open('logistics.pkl', 'rb') as file:
     classifier = pickle.load(file)
         
