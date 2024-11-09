@@ -13,8 +13,6 @@ def welcome():
 
 def predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width):
     
-    
-   
     prediction=classifier.predict([[Sepal_length, Sepal_width, Petal_length, Petal_width]])
     print(prediction)
     return prediction
@@ -33,13 +31,13 @@ def main():
 
 
     st.markdown(html_temp,unsafe_allow_html=True)
-    Sepal_length = st.text_input("Longitude")
-    Sepal_width = st.text_input("Latitude")
-    Petal_length = st.text_input("Month")
-    Petal_width = st.text_input("CO2 Column")
+    Sepal_length = st.text_input("Sepal Lenght")
+    Sepal_width = st.text_input("Sepal Width")
+    Petal_length = st.text_input("Petal Lenght")
+    Petal_width = st.text_input("Petal Width")
     result=""
     if st.button("Predict"):
-        result=predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width)
+        result = predict_iris(Sepal_length, Sepal_width, Petal_length, Petal_width)
     st.success('The output is {}'.format(result))
     if st.button("About"):
         st.text("Lets LEarn")
@@ -47,6 +45,3 @@ def main():
 
 if __name__=='__main__':
     main()
-    
-    
-    
