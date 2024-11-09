@@ -4,8 +4,8 @@ import pandas as pd
 import streamlit as st 
 
 
-with open("logistics.pickle","rb") as pickle_in:
-  classifier=pickle.load(pickle_in)
+with open("logistics.pickle", "rb") as file:
+    model = pickle.load(file)
 
 
 def welcome():
