@@ -4,9 +4,15 @@ import pandas as pd
 import streamlit as st 
 
 @st.cache_resource
-
-with open('logistics.pkl', 'rb') as file:
-    classifier = pickle.load(file)
+def load_model():
+    try:
+        with open('logistics.pkl', 'rb') as file:
+        model = pickle.load(file)
+    return model
+except FileNotFoundError:
+    st.error("The file you have attempted to load does not exist in the file directory.\
+              Kindly recheck please.")
+return None
         
 classifier = load_model()
 
