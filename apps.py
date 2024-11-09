@@ -7,7 +7,7 @@ import streamlit as st
 def load_model():
     try:
         with open('logistics.pkl', 'rb') as file:
-        model = pickle.load(file)
+            model = pickle.load(file)
     return model
 except FileNotFoundError:
     st.error("The file you have attempted to load does not exist in the file directory.\
