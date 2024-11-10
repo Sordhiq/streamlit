@@ -33,9 +33,9 @@ def main():
   
   if st.button("Predict"):
     predictions = predi(rainfall_rolling, rainfall_lag, cumulative_rainfall)
-    st.success(f"The Predicted Malaria Cases is: {predictions}")
+    st.success(np.round(f"The Predicted Malaria Cases is: {predictions}"), 1)
     
-    st.expander("This model is proudly developed by Group 2 members of the CAN Data Science Fellowship")
+  st.expander("This model is proudly developed by Group 2 members of the CAN Data Science Fellowship")
 
 if __name__=='__main__':
     main()
