@@ -3,7 +3,7 @@ import numpy as np
 import streamlit as st
 
 st.title("Malaria Prediction App")
-st.subtitle("This web application is aimed at using climatic variables in predicting malaria prevalences")
+st.subheader("This web application is aimed at using climatic variables in predicting malaria prevalences")
 
 @st.cache_resource
 def load_model():
