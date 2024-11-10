@@ -17,7 +17,7 @@ def load_model():
 model = load_model()
 
 def predi(rainfall_rolling, rainfall_lag, cumulative_rainfall):
-  features = np.array([[rainfall_rolling, rainfall_lag, cumulative_rainfall]])
+  features = np.array([rainfall_rolling, rainfall_lag, cumulative_rainfall])
   prediction = model.predict(features)
   return prediction
 
