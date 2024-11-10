@@ -9,8 +9,8 @@ st.subheader("This web application is aimed at using climatic variables in predi
 def load_model():
   try:
     with open("damat.pkl", "rb") as file:
-      model = pickle.load(file)
-    return model
+      mod = pickle.load(file)
+    return mod
     
   except FileNotFoundError:
     st.error("You have attempted to load a wrong pickle file")
