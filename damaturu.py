@@ -17,7 +17,7 @@ def load_model():
 model = load_model()
 
 def predi(rainfall_rolling, rainfall_lag, cumulative_rainfall):
-  features = np.array([rainfall_rolling, rainfall_lag, cumulative_rainfall])
+  features = np.array([[rainfall_rolling, rainfall_lag, cumulative_rainfall]])
   prediction = model.predict(features)
   return prediction
 
@@ -25,6 +25,7 @@ def predi(rainfall_rolling, rainfall_lag, cumulative_rainfall):
 def main():
 
   st.title("Malaria Prediction App")
+  st.logo("🦟")
   st.subheader("This web application is aimed at using climatic variables in predicting malaria prevalences")
     
   rainfall_rolling = st.number_input("Rainfall Rolling Average", value=17.0, min_value=0.0, max_value=263.0)
@@ -33,9 +34,16 @@ def main():
   
   if st.button("Predict"):
     predictions = predi(rainfall_rolling, rainfall_lag, cumulative_rainfall)
-    st.success(f"The Predicted Malaria Cases is: {np.round(predictions, 1)}")
+    st.success(f"The Predicted Malaria Cases is: {np.round(predictions, 0)}")
     
-  st.expander("This model is proudly developed by Group 2 members of the CAN Data Science Fellowship")
+  with st.expander("▶️ About this App!"):
+    st.write("""
+                This machine learning application is proudly developed by Group 2 members of the CAN Data Science Fellowship
+                The model uses climatic variables like:
+                - Rainfall (rainfall rolling, rainfall lag and cumulative rainfall)
+                - Temperature 
+                in predicting malaria cases.
+                """)
 
 if __name__=='__main__':
     main()
