@@ -26,9 +26,9 @@ def pred():
 
 models = pred()
 
-if st.button("Predict")
+if st.button("Predict"):
   st.success("The Predicted Malaria Cases is:", models)
-
+  
 st.expander("This model is proudly developed by Group 2 members of the CAN Data Science Fellowship")
 
 if __main__ = __name__
