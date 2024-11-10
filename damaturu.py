@@ -41,7 +41,7 @@ def main():
                 This machine learning application is proudly developed by Group 2 members of the CAN Data Science Fellowship.\
                 The model uses climatic variables like:
                 - Rainfall (rainfall rolling, rainfall lag and cumulative rainfall)
-                - Temperature \ 
+                - Temperature 
                 in predicting malaria cases.
                 """)
 
