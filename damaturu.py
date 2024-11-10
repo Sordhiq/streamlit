@@ -10,6 +10,8 @@ def load_model():
   try:
     with open("damat.pkl", "rb") as file:
       model = pickle.load(file)
+    return model
+    
   except FileNotFoundError:
     st.error("You have attempted to load a wrong pickle file")
     return None
