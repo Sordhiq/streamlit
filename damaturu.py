@@ -35,5 +35,5 @@ if st.button("Predict"):
   
 st.expander("This model is proudly developed by Group 2 members of the CAN Data Science Fellowship")
 
-if __name__ == '__main__':
+if __name__=='__main__':
     main()
