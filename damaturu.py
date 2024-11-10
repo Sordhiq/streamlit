@@ -29,12 +29,11 @@ def predi(rainfall_rolling, rainfall_lag, cumulative_rainfall):
   prediction = model.predict(features)
   return prediction
 
-
-
 if st.button("Predict"):
-  st.success("The Predicted Malaria Cases is:", predi)
+  predictions = predi(rainfall_rolling, rainfall_lag, cumulative_rainfall)
+  st.success("The Predicted Malaria Cases is:", predictions)
   
 st.expander("This model is proudly developed by Group 2 members of the CAN Data Science Fellowship")
 
 if __name__ == '__main__':
-  main()
+    main()
