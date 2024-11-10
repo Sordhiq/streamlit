@@ -25,7 +25,7 @@ def predi(rainfall_rolling, rainfall_lag, cumulative_rainfall):
 def main():
 
   st.title("Malaria Prediction App")
-  st.logo("https://tse4.mm.bing.net/th?id=OIP.sSzGxMbAOpWuubzxOehV-gAAAA&pid=Api")
+  st.logo(https://tse4.mm.bing.net/th?id=OIP.sSzGxMbAOpWuubzxOehV-gAAAA&pid=Api)
   st.subheader("This web application is aimed at using climatic variables in predicting malaria prevalences")
     
   rainfall_rolling = st.number_input("Rainfall Rolling Average", value=17.0, min_value=0.0, max_value=263.0)
@@ -38,10 +38,10 @@ def main():
     
   with st.expander("▶️ About this App!"):
     st.write("""
-                This machine learning application is proudly developed by Group 2 members of the CAN Data Science Fellowship
+                This machine learning application is proudly developed by Group 2 members of the CAN Data Science Fellowship.\
                 The model uses climatic variables like:
                 - Rainfall (rainfall rolling, rainfall lag and cumulative rainfall)
-                - Temperature 
+                - Temperature \ 
                 in predicting malaria cases.
                 """)
 
