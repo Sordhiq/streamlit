@@ -27,9 +27,9 @@ def main():
   st.title("Malaria Prediction App")
   st.subheader("This web application is aimed at using climatic variables in predicting malaria prevalences")
     
-  rainfall_rolling = st.number_input(value=17.0, min_value=0.0, max_value=263.0)
-  rainfall_lag = st.number_input(value=50.0, min_value=0.0, max_value=400.0)
-  cumulative_rainfall = st.number_input(value=4500.0, min_value=1000.0, max_value=8000.0)
+  rainfall_rolling = st.number_input("Rainfall Rolling Average", value=17.0, min_value=0.0, max_value=263.0)
+  rainfall_lag = st.number_input("Ranfall Lag 3", value=50.0, min_value=0.0, max_value=400.0)
+  cumulative_rainfall = st.number_input("Cumulative Rainfall", value=4500.0, min_value=1000.0, max_value=8000.0)
   
   if st.button("Predict"):
     predictions = predi(rainfall_rolling, rainfall_lag, cumulative_rainfall)
