@@ -3,6 +3,13 @@ import numpy as np
 import pickle
 import streamlit as st
 
+# Set page config
+st.set_page_config(
+    page_title="Malaria Prediction App",
+    page_icon="🦟",
+    layout="centered"
+)
+
 @st.cache_resource
 def load_model():
   try:
@@ -23,13 +30,6 @@ def predi(rainfall_rolling, rainfall_lag, cumulative_rainfall):
 
   
 def main():
-
-  # Set page config
-  st.set_page_config(
-  page_title="Malaria Prediction App",
-  page_icon="🦟",
-  layout="centered")
-
   st.subheader("This web application is aimed at using climatic variables in predicting malaria prevalences")
     
   rainfall_rolling = st.number_input("Rainfall Rolling Average", value=17.0, min_value=0.0, max_value=263.0)
