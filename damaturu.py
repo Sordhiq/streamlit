@@ -45,11 +45,11 @@ def main():
     cumulative_rainfall = st.number_input("Cumulative Rainfall", value=4500.0, min_value=1000.0, max_value=8000.0)
   
   if st.button("Predict"):
-    predictions = predi(rainfall_rolling, rainfall_lag, cumulative_rainfall)
-    st.success(f"The Predicted Malaria Case is: {int(predictions)}")
+      predictions = predi(rainfall_rolling, rainfall_lag, cumulative_rainfall)
+      st.success(f"The Predicted Malaria Case is: {int(predictions)}")
     
   with st.expander("▶️ About this App!"):
-    st.write("""
+      st.write("""
                 This machine learning application is proudly developed by Group 2 members of the CAN Data Science Fellowship.\
                 The model uses climatic variables like Rainfall and Temperatures in predicting malaria prevalence.""")
 
