@@ -16,6 +16,13 @@ def load_model():
 
 model = load_model()
 
+# Set page config
+st.set_page_config(
+    page_title="Iris Flower Prediction",
+    page_icon="🦟",
+    layout="centered"
+)
+
 def predi(rainfall_rolling, rainfall_lag, cumulative_rainfall):
   features = np.array([[rainfall_rolling, rainfall_lag, cumulative_rainfall]])
   prediction = model.predict(features)
