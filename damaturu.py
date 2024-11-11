@@ -6,7 +6,7 @@ import streamlit as st
 # Set page config
 st.set_page_config(
     page_title="Malaria Prediction App",
-    page_icon="🦟",
+    page_icon="🔖",
     layout="centered"
 )
 
@@ -30,7 +30,16 @@ def predi(rainfall_rolling, rainfall_lag, cumulative_rainfall):
 
   
 def main():
-  st.subheader("This web application is aimed at using climatic variables in predicting malaria prevalences")
+    st.title("Malaria Prediction App")
+    html_temp = """
+    <div style="background-color:tomato;padding:10px">
+    <h2 style="color:white;text-align:center;">Malaria Prediction App </h2>
+    </div>
+    """
+        
+    """Proudly... Group 2, CAN Data Science Fellowship!"""  
+    
+  st.subheader("This web application uses climatic variables in predicting malaria prevalences")
     
   rainfall_rolling = st.number_input("Rainfall Rolling Average", value=17.0, min_value=0.0, max_value=263.0)
   rainfall_lag = st.number_input("Ranfall Lag 3", value=50.0, min_value=0.0, max_value=400.0)
@@ -38,16 +47,12 @@ def main():
   
   if st.button("Predict"):
     predictions = predi(rainfall_rolling, rainfall_lag, cumulative_rainfall)
-    st.success(f"The Predicted Malaria Cases is: {np.round(predictions, 0)}")
+    st.success(f"The Predicted Malaria Case is: {int(predictions)}")
     
   with st.expander("▶️ About this App!"):
     st.write("""
                 This machine learning application is proudly developed by Group 2 members of the CAN Data Science Fellowship.\
-                The model uses climatic variables like:
-                - Rainfall (rainfall rolling, rainfall lag and cumulative rainfall)
-                - Temperature 
-                in predicting malaria cases.
-                """)
+                The model uses climatic variables like Rainfall and Temperatures in predicting malaria prevalence.""")
 
 if __name__=='__main__':
     main()
