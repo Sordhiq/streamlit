@@ -32,7 +32,7 @@ def main():
     st.title("Malaria Prediction App")
     html_temp = """
     <div style="background-color:tomato;padding:10px">
-    <h2 style="color:white;text-align:center;">Malaria Prediction App </h2>
+    <h2 style="color:white;text-align:center;">Malaria Prediction App</h2>
     </div>
     """
         
