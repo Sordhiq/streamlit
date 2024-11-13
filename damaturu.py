@@ -21,6 +21,7 @@ def load_model():
     st.error("You have attempted to load a wrong pickle file")
     return None
 
+# Instantiating model
 model = load_model()
 
 def predi(rainfall_rolling, rainfall_lag, cumulative_rainfall):
