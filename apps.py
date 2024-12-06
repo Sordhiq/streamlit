@@ -4,6 +4,7 @@ import pandas as pd
 import streamlit as st 
 
 @st.cache_resource
+
 def load_model():
     try:
         with open('logistics.pkl', 'rb') as file:
