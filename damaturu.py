@@ -37,7 +37,7 @@ def main():
     </div>
     """
         
-    """Proudly... Group 2, CAN Data Science Fellowship!"""  
+    """Proudly... Group 2, Climate Accelerator Network (CAN) Training, 2024!"""  
     st.subheader("This web application uses climatic variables in predicting malaria prevalences")
    
     rainfall_rolling = st.number_input("Rainfall Rolling Average", value=17.0, min_value=0.0, max_value=263.0)
